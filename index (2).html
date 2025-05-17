@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banavath Pavan Kumar - Portfolio</title>
+    <style>
+        /* Basic Reset & Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+        header {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 1.5rem 0;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        header h1 {
+            margin-bottom: 0.2rem;
+            font-size: 2.5rem;
+        }
+        header .contact-info {
+            font-size: 0.9rem;
+        }
+        header .contact-info a {
+            color: #ecf0f1;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        header .contact-info a:hover {
+            text-decoration: underline;
+        }
+        nav {
+            background-color: #34495e;
+            padding: 0.5rem 0;
+        }
+        nav ul {
+            list-style: none;
+            text-align: center;
+        }
+        nav ul li {
+            display: inline-block;
+            margin: 0 15px;
+        }
+        nav ul li a {
+            color: #ecf0f1;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 5px 10px;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+        nav ul li a:hover, nav ul li a.active {
+            background-color: #e74c3c;
+        }
+
+        /* Section Styling */
+        section {
+            padding: 40px 0;
+            border-bottom: 1px solid #eee;
+        }
+        section:last-of-type {
+            border-bottom: none;
+        }
+        section h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2rem;
+            color: #2c3e50;
+            position: relative;
+        }
+        section h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background-color: #e74c3c;
+            margin: 8px auto 0;
+        }
+
+        /* Hero Section */
+        #hero {
+            background: #34495e;
+            color: #ecf0f1;
+            text-align: center;
+            padding: 60px 20px;
+        }
+        #hero h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+        #hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 20px;
+        }
+        .cta-button {
+            display: inline-block;
+            background-color: #e74c3c;
+            color: #fff;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+        .cta-button:hover {
+            background-color: #c0392b;
+        }
+
+        /* About Section */
+        #about .summary-text {
+            text-align: justify;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+        .education-item {
+            background-color: #fff;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        .education-item h3 {
+            color: #e74c3c;
+            margin-bottom: 5px;
+        }
+        .education-item p {
+            margin-bottom: 3px;
+            font-size: 0.95rem;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .skill-category {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        .skill-category h3 {
+            color: #e74c3c;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
+        }
+        .skill-category ul {
+            list-style: none;
+        }
+        .skill-category ul li {
+            background-color: #ecf0f1;
+            color: #34495e;
+            padding: 5px 10px;
+            margin-bottom: 5px;
+            border-radius: 3px;
+            font-size: 0.9rem;
+        }
+
+        /* Projects & Experience Section */
+        .item-card {
+            background-color: #fff;
+            padding: 25px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .item-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.12);
+        }
+        .item-card h3 {
+            color: #e74c3c;
+            margin-bottom: 8px;
+            font-size: 1.5rem;
+        }
+        .item-card .dates {
+            font-style: italic;
+            color: #7f8c8d;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+        }
+        .item-card .description ul {
+            list-style-position: inside;
+            padding-left: 0; /* Reset default ul padding */
+        }
+        .item-card .description ul li {
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+        .technologies {
+            margin-top: 15px;
+        }
+        .technologies strong {
+            color: #2c3e50;
+        }
+        .technologies span {
+            background-color: #3498db;
+            color: white;
+            padding: 3px 8px;
+            border-radius: 3px;
+            font-size: 0.8rem;
+            margin-right: 5px;
+            margin-bottom: 5px;
+            display: inline-block;
+        }
+        .project-links a {
+            color: #e74c3c;
+            text-decoration: none;
+            font-weight: bold;
+            margin-right: 15px;
+        }
+        .project-links a:hover {
+            text-decoration: underline;
+        }
+
+        /* Contact Section */
+        #contact {
+            text-align: center;
+        }
+        #contact p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+        #contact .social-links a {
+            display: inline-block;
+            margin: 0 10px;
+            font-size: 1.5rem;
+            color: #34495e;
+            transition: color 0.3s ease;
+        }
+        #contact .social-links a:hover {
+            color: #e74c3c;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px 0;
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            font-size: 0.9rem;
+        }
+        footer a {
+            color: #ecf0f1;
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            header h1 { font-size: 2rem; }
+            #hero h1 { font-size: 2.5rem; }
+            #hero p { font-size: 1rem; }
+            section h2 { font-size: 1.8rem; }
+            nav ul li { display: block; margin: 10px 0; }
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>BANAVATH PAVAN KUMAR</h1>
+        <div class="contact-info">
+            <a href="tel:+16823926080">+1 (682)-392-6080</a> |
+            <a href="mailto:pavankumardevara6@gmail.com">pavankumardevara6@gmail.com</a> |
+            Arlington, Texas
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#about">About & Education</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#experience">Experience & Research</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="hero" class="container">
+            <h1>Data Scientist & ML Enthusiast</h1>
+            <p>Developing predictive models, recommendation systems, and real-time data processing applications. Passionate about leveraging data-driven solutions to optimize performance and drive strategic decision-making.</p>
+            <a href="#projects" class="cta-button">View My Work</a>
+        </section>
+
+        <section id="about" class="container">
+            <h2>About Me & Education</h2>
+            <p class="summary-text">
+                I am a Data Science graduate student with a strong foundation in machine learning, deep learning, and data analytics. Experienced in developing predictive models, recommendation systems, and real-time data processing applications. Proficient in Python, SQL, and various ML/DL frameworks, with hands-on experience in cloud computing (AWS, Databricks) and big data technologies (Hadoop, Apache Spark, Kafka). Published research on hyperspectral image denoising and worked on multiple projects involving AI, IoT, and business intelligence.
+            </p>
+            <h3>Education</h3>
+            <div class="education-item">
+                <h3>University of Texas Arlington</h3>
+                <p>Masters in Data Science | 3.55/4 CGPA</p>
+                <p><em>Aug, 2023 - May, 2025</em></p>
+            </div>
+            <div class="education-item">
+                <h3>SRM University, Andhra Pradesh</h3>
+                <p>B.Tech, Electronics and Communication | 3.3/4 CGPA</p>
+                <p><em>June, 2019 - June, 2023</em></p>
+            </div>
+        </section>
+
+        <section id="skills" class="container">
+            <h2>Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Programming Languages</h3>
+                    <ul>
+                        <li>Python</li><li>SQL</li><li>C</li><li>Scala</li><li>HTML</li><li>CSS</li><li>Embedded C</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Machine Learning & AI</h3>
+                    <ul>
+                        <li>Scikit-learn</li><li>TensorFlow</li><li>Keras</li><li>PyTorch</li><li>LightGBM</li><li>PyCaret</li><li>XGBoost</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Data Analysis & Visualization</h3>
+                    <ul>
+                        <li>Pandas</li><li>NumPy</li><li>Matplotlib</li><li>Seaborn</li><li>Plotly</li><li>Pytorch (for data tasks)</li><li>Power BI</li><li>Tableau</li><li>Excel</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Big Data & Cloud Computing</h3>
+                    <ul>
+                        <li>AWS (EC2, S3, Auto Scaling, ELB)</li><li>Databricks</li><li>Apache Spark</li><li>Hadoop</li><li>Kafka</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Databases</h3>
+                    <ul>
+                        <li>MySQL</li><li>PostgreSQL</li><li>SQLite</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Tools & Platforms</h3>
+                    <ul>
+                        <li>VS Code</li><li>MATLAB</li><li>Vivado</li><li>LTspice</li><li>PowerPoint</li><li>Jupyter Notebook</li>
+                    </ul>
+                </div>
+            </div>
+             <br>
+            <h3>Relevant Courses</h3>
+            <p>Machine Learning, Probability and statistics, Cloud Computing and Big Data, Web Data Management, Data Science, Operation Research.</p>
+        </section>
+
+        <section id="projects" class="container">
+            <h2>Projects</h2>
+            <div class="item-card">
+                <h3>Real-Time Predictive Maintenance System</h3>
+                <p class="dates">Sept, 2024 - Dec, 2024</p>
+                <div class="description">
+                    <ul>
+                        <li>Developed a predictive maintenance system using IoT sensor data, LSTM networks, and anomaly detection, reducing downtime by 20% through proactive alerts.</li>
+                        <li>Implemented real-time data processing with Apache Kafka and Spark, deploying models on AWS for scalability and visualization via dashboards.</li>
+                    </ul>
+                </div>
+                <div class="technologies">
+                    <strong>Technologies:</strong> <span>IoT</span> <span>LSTM</span> <span>Anomaly Detection</span> <span>Apache Kafka</span> <span>Apache Spark</span> <span>AWS</span>
+                </div>
+            </div>
+            <div class="item-card">
+                <h3>Predicting Customer Purchases Using Machine Learning</h3>
+                <p class="dates">July, 2024 - Aug, 2024</p>
+                <div class="description">
+                    <ul>
+                        <li>Built a customer purchase prediction model using Random Forest, SVM, and neural networks, achieving 85% accuracy.</li>
+                        <li>Developed a recommendation engine with collaborative and content-based filtering, enhancing personalization.</li>
+                        <li>Conducted EDA and feature engineering using LightGBM, PyCaret, and Plotly for visualization.</li>
+                    </ul>
+                </div>
+                <div class="technologies">
+                    <strong>Technologies:</strong> <span>Random Forest</span> <span>SVM</span> <span>Neural Networks</span> <span>LightGBM</span> <span>PyCaret</span> <span>Plotly</span>
+                </div>
+            </div>
+             <div class="item-card">
+                <h3>Denoising Medical HSI using 3D CNN</h3>
+                <p class="dates">Jan, 2024 - Feb, 2024</p>
+                <div class="description">
+                    <ul>
+                        <li>Optimized model performance and scalability by leveraging AWS EC2 instances for training and deployment, utilizing services like Auto Scaling, Elastic Load Balancing, and S3 for efficient data storage and access.</li>
+                        <li>Utilized advanced libraries such as PyTorch, TensorFlow, Keras, OpenCV, scikit-learn, and NumPy for sophisticated data preprocessing, model training, and optimization.</li>
+                        <li>Managed large-scale datasets using Amazon S3 (via boto3 API), ensuring efficient storage and access for model training and deployment.</li>
+                    </ul>
+                </div>
+                <div class="technologies">
+                    <strong>Technologies:</strong> <span>3D CNN</span> <span>AWS EC2</span> <span>S3</span> <span>PyTorch</span> <span>TensorFlow</span> <span>Keras</span> <span>OpenCV</span> <span>NumPy</span>
+                </div>
+            </div>
+            <div class="item-card">
+                <h3>Project Management on Neural Networks</h3>
+                <p class="dates">Feb, 2024 - April, 2024</p>
+                <div class="description">
+                    <ul>
+                        <li>Reported on advance Neural network development for image Recognition project focusing on time estimation for project completion.</li>
+                        <li>Analyzed project management frameworks including Work Breakdown Structure (WBS), OBS, Network diagram, Gantt chart, resource usage form, Risk Assessment form, and risk response Matrix.</li>
+                    </ul>
+                </div>
+                 <div class="technologies">
+                    <strong>Technologies:</strong> <span>Project Management</span> <span>WBS</span> <span>Gantt Chart</span> <span>Risk Assessment</span>
+                </div>
+            </div>
+            <div class="item-card">
+                <h3>Interface for the Railway Reservation System</h3>
+                <p class="dates">Nov, 2023 - Dec, 2023</p>
+                <div class="description">
+                    <ul>
+                        <li>Created an interface for the Railway Reservation System using GUI/query.</li>
+                        <li>Collected railway passenger's dataset and used methods Tk module, sqlite3. written in SQL.</li>
+                    </ul>
+                </div>
+                 <div class="technologies">
+                    <strong>Technologies:</strong> <span>Python (Tkinter)</span> <span>SQLite</span> <span>SQL</span> <span>GUI</span>
+                </div>
+            </div>
+            <div class="item-card">
+                <h3>Sales Dashboard Using Power BI</h3>
+                <p class="dates">Aug, 2023 – Nov, 2023</p>
+                <div class="description">
+                    <ul>
+                        <li>Created an interactive Power BI dashboard to visualize sales data and identify key performance trends.</li>
+                        <li>Utilized DAX functions and KPIs to deliver actionable insights for strategic decision-making.</li>
+                    </ul>
+                </div>
+                <div class="technologies">
+                    <strong>Technologies:</strong> <span>Power BI</span> <span>DAX</span> <span>KPIs</span> <span>Data Visualization</span>
+                </div>
+            </div>
+            <div class="item-card">
+                <h3>Credit card Fraud using ML</h3>
+                <p class="dates">Feb, 2022 - June, 2022</p>
+                <div class="description">
+                    <ul>
+                        <li>Built a fraud detection model using Logistic Regression, Random Forest, and XGBoost on bank transaction data.</li>
+                        <li>Applied SMOTE for class imbalance and evaluated performance using AUC-ROC, precision, and recall.</li>
+                    </ul>
+                </div>
+                 <div class="technologies">
+                    <strong>Technologies:</strong> <span>Logistic Regression</span> <span>Random Forest</span> <span>XGBoost</span> <span>SMOTE</span> <span>AUC-ROC</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience" class="container">
+            <h2>Work Experience & Research</h2>
+            <div class="item-card">
+                <h3>Internet Of Things (IOT) Internship</h3>
+                <p class="employer-name">APSSDC-AP, Amaravati</p>
+                <p class="dates">May, 2021 - July, 2021</p>
+                <div class="description">
+                    <ul>
+                        <li>Developed and simulated IoT systems using Arduino, Embedded C, and Proteus, designing a car automation system with ultrasonic sensors for obstacle detection.</li>
+                        <li>Analyzed sensor data using statistical methods to identify trends and anomalies, improving system performance by 15%.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="item-card">
+                <h3>Research: The effectiveness of Denoising Technique in Hyperspectral Images</h3>
+                <p class="conference-name">Published at the 4th International Conference on Intelligent Technologies (IEEE)</p>
+                <p class="dates">Research: Jan, 2023 - May, 2023 | Publication: June 2024 (CONIT2024)</p>
+                <div class="description">
+                    <ul>
+                        <li>Researched denoising hyperspectral images (HSI) for enhanced image quality.</li>
+                        <li>Utilized Python, PyTorch, Keras, Scikit-learn, NumPy, and Pandas for data processing, analysis, and model development.</li>
+                        <li>Collected and preprocessed 3D medical datasets, applying bilateral, Gaussian, median, and adaptive bilateral filters for noise removal.</li>
+                        <li>Designed and implemented a denoising pipeline to improve image clarity while minimizing information loss.</li>
+                    </ul>
+                </div>
+            </div>
+            <h3>Certifications</h3>
+            <ul>
+                <li>4th International conference on Intelligent Technologies (CONIT2024) - June 2024</li>
+                <li>Internet Of Things (IOT) | Internship | - July, 2021</li>
+                <li>Fundamentals of Drone Technology |APSSDC| - Aug, 2020</li>
+                <li>Ethical hacking |IIT HYD| - Oct, 2019</li>
+            </ul>
+        </section>
+
+        <section id="contact" class="container">
+            <h2>Get In Touch</h2>
+            <p>I'm always open to discussing new projects, collaborations, or opportunities. Feel free to reach out!</p>
+            <p><strong>Email:</strong> <a href="mailto:pavankumardevara6@gmail.com">pavankumardevara6@gmail.com</a></p>
+            <p><strong>Phone:</strong> <a href="tel:+16823926080">+1 (682)-392-6080</a></p>
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/pavan-b-849547233" target="_blank" title="LinkedIn">LinkedIn</a>
+                <a href="https://github.com/PKB12022" target="_blank" title="GitHub">GitHub</a>
+                <!-- Add more social links as needed -->
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© <span id="currentYear"></span> Banavath Pavan Kumar. All Rights Reserved.</p>
+            <p>Connect with me on <a href="https://www.linkedin.com/in/pavan-b-849547233" target="_blank">LinkedIn</a> and <a href="https://github.com/PKB12022" target="_blank">GitHub</a>.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll for navigation links
+        document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Set current year in footer
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+    </script>
+
+</body>
+</html>
